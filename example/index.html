@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Leaflet Overview Control</title>
+        
+        <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.5.1/leaflet.css" />
+        <script src="http://cdn.leafletjs.com/leaflet-0.5.1/leaflet.js"></script>
+        
+        <link rel="stylesheet" href="../src/leaflet-overview.css" />
+        <script src="../src/leaflet-overview.js"></script>
+        
+        <style>
+          html, body, #map {
+            margin: 0;
+            width: 100%;
+            height: 100%;
+            }
+        </style>
+    </head>
+    
+    <body>
+        <div id="map"></div>
+        
+        <script>
+            // Create our base layers
+            var osm = L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+              name: 'osm',
+              attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+            });
+            
+            var mqo = L.tileLayer('http://otile{s}.mqcdn.com/tiles/1.0.0/osm/{z}/{x}/{y}.png', {
+              name: 'mapquest',
+              attribution: 'Tiles courtesy of <a href="http://www.mapquest.com/">MapQuest</a>',
+              subdomains: '1234'
+            });
+            
+            // Initialize the map with our default layer
+            var map = L.map('map', {
+              layers: osm,
+              center: [43.12, -77.67],
+              zoom:   10
+            });
+            
+            // Add the layer control to the map
+            L.control.layers({
+              'OpenStreetMap': osm, 
+              'MapQuest Open': mqo
+            }).addTo(map);
+            
+            // We can't reuse the layers from the main map for the overview, so we
+            // need to create a second instance of each layer option
+            var osm2 = L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+              name: 'osm',
+              attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+            });
+            
+            var mqo2 = L.tileLayer('http://otile{s}.mqcdn.com/tiles/1.0.0/osm/{z}/{x}/{y}.png', {
+              name: 'mapquest',
+              attribution: 'Tiles courtesy of <a href="http://www.mapquest.com/">MapQuest</a>',
+              subdomains: '1234'
+            });
+            
+            // Add the overview control to the map
+            L.control.overview([osm2, mqo2]).addTo(map);
+        </script>
+    </body>
+</html>
