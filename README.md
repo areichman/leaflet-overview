@@ -54,7 +54,7 @@ var mqo2 = L.tileLayer('http://otile{s}.mqcdn.com/tiles/1.0.0/osm/{z}/{x}/{y}.pn
 L.control.overview([osm2, mqo2]).addTo(map);
 ```
 
-You can see the above code in action in the [example](http://areichman.github.io/leaflet-overview).
+You can see the above code in action in the [example](http://areichman.github.io/leaflet-overview/example/).
 
 ## License
 L.Control.Overview is free software, and may be redistributed under the MIT-LICENSE.
