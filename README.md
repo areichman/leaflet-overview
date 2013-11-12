@@ -5,11 +5,11 @@ Provides an overview map that responds to base layer changes.
 The same layer instance cannot be used in the main map and the overview at the same
 time, so separate layers must be created. Because there are multiple layers of the same 
 type involved, each layer must contain a 'name' attribute so the control can keep the
-two maps in sync with each during base layer changes.
+two maps in sync during base layer changes.
 
 First, define two base layers and initialize the main map with the default base layer:
 
-```javscript
+```javascript
 var osm = L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
   name: 'osm',
   attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
